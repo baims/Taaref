@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		18B6D87319C8D3EE0039E59E /* CategoriesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B6D87219C8D3EE0039E59E /* CategoriesTableViewCell.swift */; };
 		18CF8C9019C78E40007D5B4D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CF8C8F19C78E40007D5B4D /* AppDelegate.swift */; };
 		18CF8C9319C78E40007D5B4D /* Taaref.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 18CF8C9119C78E40007D5B4D /* Taaref.xcdatamodeld */; };
 		18CF8C9519C78E40007D5B4D /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CF8C9419C78E40007D5B4D /* HomeViewController.swift */; };
@@ -27,6 +28,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		18B6D87219C8D3EE0039E59E /* CategoriesTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoriesTableViewCell.swift; sourceTree = "<group>"; };
 		18CF8C8A19C78E40007D5B4D /* Taaref.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Taaref.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		18CF8C8E19C78E40007D5B4D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		18CF8C8F19C78E40007D5B4D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -58,6 +60,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		18B6D86F19C8A3110039E59E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				18B6D87219C8D3EE0039E59E /* CategoriesTableViewCell.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
 		18CF8C8119C78E40007D5B4D = {
 			isa = PBXGroup;
 			children = (
@@ -79,6 +89,7 @@
 		18CF8C8C19C78E40007D5B4D /* Taaref */ = {
 			isa = PBXGroup;
 			children = (
+				18B6D86F19C8A3110039E59E /* Model */,
 				18CF8C8F19C78E40007D5B4D /* AppDelegate.swift */,
 				18CF8C9419C78E40007D5B4D /* HomeViewController.swift */,
 				18CF8C9619C78E40007D5B4D /* Main.storyboard */,
@@ -216,6 +227,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				18CF8C9519C78E40007D5B4D /* HomeViewController.swift in Sources */,
+				18B6D87319C8D3EE0039E59E /* CategoriesTableViewCell.swift in Sources */,
 				18CF8C9319C78E40007D5B4D /* Taaref.xcdatamodeld in Sources */,
 				18CF8C9019C78E40007D5B4D /* AppDelegate.swift in Sources */,
 			);
@@ -411,6 +423,7 @@
 				18CF8CAE19C78E40007D5B4D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		18CF8CAF19C78E40007D5B4D /* Build configuration list for PBXNativeTarget "TaarefTests" */ = {
 			isa = XCConfigurationList;
@@ -419,6 +432,7 @@
 				18CF8CB119C78E40007D5B4D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
