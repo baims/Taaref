@@ -1,5 +1,5 @@
 //
-//  CategoriesTableViewCell.swift
+//  CategoryTableViewCell.swift
 //  Taaref
 //
 //  Created by Bader Alrasheed on 9/16/14.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CategoriesTableViewCell: UITableViewCell {
+class CategoryTableViewCell: UITableViewCell {
 
     @IBOutlet weak var categoryLabel: UILabel!
     @IBOutlet weak var arrowImage: UIImageView!
