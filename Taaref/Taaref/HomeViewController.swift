@@ -23,8 +23,8 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     override func viewDidLayoutSubviews() {
         self.logoImageView.layer.cornerRadius = self.logoImageView.frame.width/2
         
-        // size @2x: 242x242
-        // size @3x:
+        // size @2x: 302x302
+        // size @3x: 334x334
         println(self.logoImageView.frame.width)
         
         
@@ -52,14 +52,22 @@ extension HomeViewController {
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("PersonsSegue", forIndexPath: indexPath) as CategoriesTableViewCell
         
+        // Everything you need to change in the cell, make it inside this if statement
         if (indexPath.row % 2 == 0) {
-            cell.backgroundColor = UIColor.redColor()
+            cell.backgroundColor            = UIColor.redColor()
+            cell.categoryID                 = indexPath.row == 0 ? "designer" : "photographer"
+            cell.categoryLabel.text         = indexPath.row == 0 ? "المصممين" : "المصورين"
+            cell.arrowImage.backgroundColor = UIColor.whiteColor()
+        }
+        else {
+            cell.backgroundColor = UIColor.clearColor()
+            cell.selectionStyle  = .None
         }
         
         return cell
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-       return indexPath.row % 2 == 0 ? 70 : 54
+       return indexPath.row % 2 == 0 ? 60 : 48
     }
 }
