@@ -13,11 +13,13 @@ class CategoryViewController: UIViewController, UICollectionViewDelegateFlowLayo
     
     @IBOutlet weak var collectionView: UICollectionView!
     
+    // Instgram's Access Token: To be used with every
     let instagramAccessToken = "14222720.e71636a.071cd0f1a1f9442d9ff0116c814ed496"
     
     var categoryID   : String!
     var categoryName : String!
     
+    /* Variables where we save all the information we get from JSONs for a better access */
     var arrayOfJSON = [AnyObject]()
     var dictionaryOfImages = [String : String]()
     
@@ -25,11 +27,11 @@ class CategoryViewController: UIViewController, UICollectionViewDelegateFlowLayo
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
         
         self.title = self.categoryName
         
         
+        /*** Check if the user launched the app before or not && to have some information to display until everything is updated ***/
         if let array = NSUserDefaults.standardUserDefaults().arrayForKey("arrayOfJSON_ID=\(self.categoryID)") {
             self.arrayOfJSON = array
         }
@@ -63,6 +65,7 @@ class CategoryViewController: UIViewController, UICollectionViewDelegateFlowLayo
         operation.start()
     }
     
+    /*** Get all the Profile Images and save them in a dictionary for a better access ***/
     func fetchImageURLFromArrayAndSaveToNSUserDefaults(array: [AnyObject]) {
         for i in 0..<self.arrayOfJSON.count {
             let dictionary = self.arrayOfJSON[i] as NSDictionary
@@ -86,7 +89,6 @@ class CategoryViewController: UIViewController, UICollectionViewDelegateFlowLayo
                 
                 self.dictionaryOfImages[id] = imageURL
                 
-                println("imageURL = \(self.dictionaryOfImages[id]!), id = \(id)")
                 
                 NSUserDefaults.standardUserDefaults().setObject(self.dictionaryOfImages, forKey: "dictionaryOfImages_ID=\(self.categoryID)")
                 NSUserDefaults.standardUserDefaults().synchronize()
@@ -127,35 +129,32 @@ extension CategoryViewController {
     }
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        println(self.arrayOfJSON.count)
         return self.arrayOfJSON.count
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("PersonCell", forIndexPath: indexPath) as PersonCollectionViewCell
         
+        /*** Check if the information exists before loading it to the collection view ***/
         if NSUserDefaults.standardUserDefaults().arrayForKey("arrayOfJSON_ID=\(self.categoryID)") != nil {
             
             let dictionary = self.arrayOfJSON[indexPath.item] as NSDictionary
             
             cell.nameLabel.text = dictionary.objectForKey("username") as? String
             cell.nameLabel.sizeToFit()
+            
+            // making rounded corners and removing any background colors
             cell.imageView.layer.cornerRadius = cell.imageView.frame.width/2
             cell.imageView.backgroundColor = UIColor.clearColor()
             
-            
+            /*** Check if the image URLs exist in the dictionary before we make anything and crash the app ***/
             if NSUserDefaults.standardUserDefaults().dictionaryForKey("dictionaryOfImages_ID=\(self.categoryID)") != nil {
                 let userID = dictionary.objectForKey("userID") as? String
                 
                 if let imageURL = self.dictionaryOfImages[userID!] {
                     
-                    println("i'm coming in the second if, imageURL = \(imageURL)")
-                    
                     let url      = NSURL(string: imageURL)
                     let request  = NSURLRequest(URL: url)
-                    
-                    
-                    println("imageURL = \(imageURL)")
                     
                     
                     cell.imageView.setImageWithURLRequest(request, placeholderImage: nil, success: { (request, response, image) -> Void in
@@ -167,58 +166,15 @@ extension CategoryViewController {
                     }
                 }
             }
-            
-            /*let userID = dictionary.objectForKey("userID") as String
-            
-            let JSONurl_String = "https://api.instagram.com/v1/users/\(userID)/?access_token=\(self.instagramAccessToken)"
-            let JSONurl     = NSURL(string: JSONurl_String)
-            let JSONrequest = NSURLRequest(URL: JSONurl)
-            
-            var operation = AFHTTPRequestOperation(request: JSONrequest)
-            
-            operation.responseSerializer = AFJSONResponseSerializer()
-            
-            operation.setCompletionBlockWithSuccess({ (operation, responseObject) -> Void in
-                let mainDictionary = responseObject as NSDictionary
-                let dataDictionary = mainDictionary.objectForKey("data") as NSDictionary
-                
-                let imageURL_String = dataDictionary.objectForKey("profile_picture") as String
-                let imageURL      = NSURL(string: imageURL_String)
-                let imageRequest  = NSURLRequest(URL: imageURL)
-                
-                
-                println("imageURL = \(imageURL_String)")
-                
-                
-                cell.imageView.setImageWithURLRequest(imageRequest, placeholderImage: nil, success: { (request, response, image) -> Void in
-                    
-                    cell.imageView.image = image
-                    cell.imageView.layer.masksToBounds = true
-                    
-                    }) { (request, response, error) -> Void in
-                        println(error)
-                }
-                }, failure: { (operation, error) -> Void in
-                    println(error)
-            })
-            
-            operation.start()*/
         }
         
+        // updating constraints so everything will look GORGEOUS
         cell.setNeedsUpdateConstraints()
         cell.updateConstraintsIfNeeded()
         
         
         return cell
     }
-    
-    /*func collectionView(collectionView: UICollectionView, didEndDisplayingCell cell: UICollectionViewCell, forItemAtIndexPath indexPath: NSIndexPath) {
-        let cell2 = cell as PersonCollectionViewCell
-        
-        if cell2.imageView.image == nil {
-            println("well, it's nil:")
-        }
-    }*/
     
     /*func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
         var size = (width:CGFloat(0), height:CGFloat(0))
