@@ -95,7 +95,7 @@ extension HomeViewController {
         // Everything you need to change in the cell, make it inside this if statement
         if (indexPath.row % 2 == 0) {
             cell.backgroundColor            = UIColor.redColor()
-            cell.categoryID                 = indexPath.row == 0 ? "designer" : "photographer"
+            cell.categoryID                 = indexPath.row == 0 ? "0" : "1"
             cell.categoryLabel.text         = indexPath.row == 0 ? "المصممين" : "المصورين"
             cell.arrowImage.backgroundColor = UIColor.whiteColor()
         }
