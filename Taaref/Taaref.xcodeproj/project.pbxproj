@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		184B43DB19D0760A006A1B11 /* PersonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184B43DA19D0760A006A1B11 /* PersonViewController.swift */; };
+		184B43DD19D088F1006A1B11 /* FeedCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184B43DC19D088F1006A1B11 /* FeedCollectionViewCell.swift */; };
 		187E359C19CA2C2100B0103A /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187E359B19CA2C2100B0103A /* CategoryViewController.swift */; };
 		187E359E19CAEBA400B0103A /* PersonCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187E359D19CAEBA400B0103A /* PersonCollectionViewCell.swift */; };
 		189A421119CB97600041C46F /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 189A41ED19CB97600041C46F /* AFHTTPRequestOperation.m */; };
@@ -26,6 +28,7 @@
 		189A421F19CB97600041C46F /* UIProgressView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 189A420C19CB97600041C46F /* UIProgressView+AFNetworking.m */; };
 		189A422019CB97600041C46F /* UIRefreshControl+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 189A420E19CB97600041C46F /* UIRefreshControl+AFNetworking.m */; };
 		189A422119CB97600041C46F /* UIWebView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 189A421019CB97600041C46F /* UIWebView+AFNetworking.m */; };
+		18ADC5CF19D34DA000A69172 /* GSRightToLeftCollectionViewFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 18ADC5CE19D34DA000A69172 /* GSRightToLeftCollectionViewFlowLayout.m */; };
 		18B6D87319C8D3EE0039E59E /* CategoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B6D87219C8D3EE0039E59E /* CategoryTableViewCell.swift */; };
 		18CF8C9019C78E40007D5B4D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CF8C8F19C78E40007D5B4D /* AppDelegate.swift */; };
 		18CF8C9319C78E40007D5B4D /* Taaref.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 18CF8C9119C78E40007D5B4D /* Taaref.xcdatamodeld */; };
@@ -47,6 +50,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		184B43DA19D0760A006A1B11 /* PersonViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonViewController.swift; sourceTree = "<group>"; };
+		184B43DC19D088F1006A1B11 /* FeedCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedCollectionViewCell.swift; sourceTree = "<group>"; };
 		187E359B19CA2C2100B0103A /* CategoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
 		187E359D19CAEBA400B0103A /* PersonCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonCollectionViewCell.swift; sourceTree = "<group>"; };
 		189A41EC19CB97600041C46F /* AFHTTPRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperation.h; sourceTree = "<group>"; };
@@ -86,6 +91,8 @@
 		189A420F19CB97600041C46F /* UIWebView+AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIWebView+AFNetworking.h"; sourceTree = "<group>"; };
 		189A421019CB97600041C46F /* UIWebView+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWebView+AFNetworking.m"; sourceTree = "<group>"; };
 		189A422519CB98340041C46F /* BridgingHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BridgingHeader.h; sourceTree = "<group>"; };
+		18ADC5CD19D34DA000A69172 /* GSRightToLeftCollectionViewFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GSRightToLeftCollectionViewFlowLayout.h; sourceTree = "<group>"; };
+		18ADC5CE19D34DA000A69172 /* GSRightToLeftCollectionViewFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GSRightToLeftCollectionViewFlowLayout.m; sourceTree = "<group>"; };
 		18B6D87219C8D3EE0039E59E /* CategoryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryTableViewCell.swift; sourceTree = "<group>"; };
 		18CF8C8A19C78E40007D5B4D /* Taaref.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Taaref.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		18CF8C8E19C78E40007D5B4D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -183,6 +190,9 @@
 				189A41EA19CB973E0041C46F /* AFNetworking */,
 				18B6D87219C8D3EE0039E59E /* CategoryTableViewCell.swift */,
 				187E359D19CAEBA400B0103A /* PersonCollectionViewCell.swift */,
+				184B43DC19D088F1006A1B11 /* FeedCollectionViewCell.swift */,
+				18ADC5CD19D34DA000A69172 /* GSRightToLeftCollectionViewFlowLayout.h */,
+				18ADC5CE19D34DA000A69172 /* GSRightToLeftCollectionViewFlowLayout.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -212,11 +222,12 @@
 				18CF8C8F19C78E40007D5B4D /* AppDelegate.swift */,
 				18CF8C9419C78E40007D5B4D /* HomeViewController.swift */,
 				187E359B19CA2C2100B0103A /* CategoryViewController.swift */,
-				189A422519CB98340041C46F /* BridgingHeader.h */,
+				184B43DA19D0760A006A1B11 /* PersonViewController.swift */,
 				18CF8C9619C78E40007D5B4D /* Main.storyboard */,
 				18CF8C9919C78E40007D5B4D /* Images.xcassets */,
 				18CF8C9B19C78E40007D5B4D /* LaunchScreen.xib */,
 				18CF8C9119C78E40007D5B4D /* Taaref.xcdatamodeld */,
+				189A422519CB98340041C46F /* BridgingHeader.h */,
 				18CF8C8D19C78E40007D5B4D /* Supporting Files */,
 			);
 			path = Taaref;
@@ -350,6 +361,7 @@
 			files = (
 				189A421919CB97600041C46F /* AFURLSessionManager.m in Sources */,
 				187E359C19CA2C2100B0103A /* CategoryViewController.swift in Sources */,
+				184B43DD19D088F1006A1B11 /* FeedCollectionViewCell.swift in Sources */,
 				187E359E19CAEBA400B0103A /* PersonCollectionViewCell.swift in Sources */,
 				189A421419CB97600041C46F /* AFNetworkReachabilityManager.m in Sources */,
 				189A421A19CB97600041C46F /* AFNetworkActivityIndicatorManager.m in Sources */,
@@ -367,8 +379,10 @@
 				189A422119CB97600041C46F /* UIWebView+AFNetworking.m in Sources */,
 				189A421B19CB97600041C46F /* UIActivityIndicatorView+AFNetworking.m in Sources */,
 				189A421219CB97600041C46F /* AFHTTPRequestOperationManager.m in Sources */,
+				184B43DB19D0760A006A1B11 /* PersonViewController.swift in Sources */,
 				189A422019CB97600041C46F /* UIRefreshControl+AFNetworking.m in Sources */,
 				189A421519CB97600041C46F /* AFSecurityPolicy.m in Sources */,
+				18ADC5CF19D34DA000A69172 /* GSRightToLeftCollectionViewFlowLayout.m in Sources */,
 				189A421819CB97600041C46F /* AFURLResponseSerialization.m in Sources */,
 				189A421119CB97600041C46F /* AFHTTPRequestOperation.m in Sources */,
 			);

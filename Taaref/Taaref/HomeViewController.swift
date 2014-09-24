@@ -69,7 +69,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
             let vc   = segue.destinationViewController as CategoryViewController
             
             let indexPath = self.tableView.indexPathForSelectedRow()!
-            var cell = self.tableView.cellForRowAtIndexPath(indexPath) as CategoryTableViewCell
+            let cell = self.tableView.cellForRowAtIndexPath(indexPath) as CategoryTableViewCell
             
             vc.categoryID   = cell.categoryID
             vc.categoryName = cell.categoryLabel.text

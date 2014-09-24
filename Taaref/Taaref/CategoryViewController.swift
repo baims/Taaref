@@ -20,14 +20,16 @@ class CategoryViewController: UIViewController, UICollectionViewDelegateFlowLayo
     var categoryName : String!
     
     /* Variables where we save all the information we get from JSONs for a better access */
-    var arrayOfJSON = [AnyObject]()
+    var arrayOfJSON        = [AnyObject]()
     var dictionaryOfImages = [String : String]()
+    
+    
+    var widthOfCell : CGFloat = 1
     
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        
         self.title = self.categoryName
         
         
@@ -41,9 +43,10 @@ class CategoryViewController: UIViewController, UICollectionViewDelegateFlowLayo
         
         
         /*** Making a GET request to the website and the website returns JSON that will be used for adding persons to the Collection View ***/
-        let JSONurl_String  = "http://BaimsApps.com/Taaref/persons.php?id=\(self.categoryID)"
-        let JSONurl = NSURL(string: JSONurl_String)
-        let JSONrequest = NSURLRequest(URL: JSONurl)
+        let JSONurl_String = "http://BaimsApps.com/Taaref/persons.php?id=\(self.categoryID)"
+        let JSONurl        = NSURL(string: JSONurl_String)
+        let JSONrequest    = NSURLRequest(URL: JSONurl)
+        
         
         var operation = AFHTTPRequestOperation(request: JSONrequest)
         
@@ -73,8 +76,9 @@ class CategoryViewController: UIViewController, UICollectionViewDelegateFlowLayo
             let userID = dictionary.objectForKey("userID") as String
             
             let JSONurl_String = "https://api.instagram.com/v1/users/\(userID)/?access_token=\(self.instagramAccessToken)"
-            let JSONurl     = NSURL(string: JSONurl_String)
-            let JSONrequest = NSURLRequest(URL: JSONurl)
+            let JSONurl        = NSURL(string: JSONurl_String)
+            let JSONrequest    = NSURLRequest(URL: JSONurl)
+            
             
             var operation = AFHTTPRequestOperation(request: JSONrequest)
             
@@ -85,7 +89,8 @@ class CategoryViewController: UIViewController, UICollectionViewDelegateFlowLayo
                 let dataDictionary = mainDictionary.objectForKey("data") as NSDictionary
                 
                 let imageURL = dataDictionary.objectForKey("profile_picture") as String
-                let id   = dataDictionary.objectForKey("id") as String
+                let id       = dataDictionary.objectForKey("id") as String
+                
                 
                 self.dictionaryOfImages[id] = imageURL
                 
@@ -94,7 +99,7 @@ class CategoryViewController: UIViewController, UICollectionViewDelegateFlowLayo
                 NSUserDefaults.standardUserDefaults().synchronize()
                 
                 self.collectionView.reloadData()
-                
+
                 }, failure: { (operation, error) -> Void in
                     println(error)
             })
@@ -109,15 +114,17 @@ class CategoryViewController: UIViewController, UICollectionViewDelegateFlowLayo
     }
 
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue!, sender: AnyObject!) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "PersonSegue" {
+            let vc = segue.destinationViewController as PersonViewController
+            
+            let indexPaths = self.collectionView.indexPathsForSelectedItems() as [NSIndexPath]
+            let cell = self.collectionView.cellForItemAtIndexPath(indexPaths[0]) as PersonCollectionViewCell
+            
+            vc.username = cell.nameLabel.text
+            vc.userID   = cell.userID
+        }
     }
-    */
 
 }
 
@@ -143,8 +150,10 @@ extension CategoryViewController {
             cell.nameLabel.text = dictionary.objectForKey("username") as? String
             cell.nameLabel.sizeToFit()
             
+            cell.userID = dictionary.objectForKey("userID")! as String
+            
             // making rounded corners and removing any background colors
-            cell.imageView.layer.cornerRadius = cell.imageView.frame.width/2
+            cell.imageView.layer.cornerRadius = self.widthOfCell/2-14
             cell.imageView.backgroundColor = UIColor.clearColor()
             
             /*** Check if the image URLs exist in the dictionary before we make anything and crash the app ***/
@@ -176,9 +185,22 @@ extension CategoryViewController {
         return cell
     }
     
-    /*func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-        var size = (width:CGFloat(0), height:CGFloat(0))
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
         
-        return CGSizeMake(size.width, size.height)
-    }*/
+        // Changing constraints depending on the device's screen size
+        switch self.view.frame.height {
+        case 480: // iPhone 4/4s
+            self.widthOfCell = 96
+        case 568: // iPhone 5/5s
+            self.widthOfCell = 96
+        case 667: // iPhone 6
+            self.widthOfCell = 114
+        case 736: // iPhone 6 Plus
+            self.widthOfCell = 120
+        default:
+            self.widthOfCell = 120
+        }
+        
+        return CGSizeMake(self.widthOfCell, self.widthOfCell+4)
+    }
 }
